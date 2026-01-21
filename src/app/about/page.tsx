@@ -207,7 +207,7 @@ export default function AboutPage() {
                                             alt="Saudi Electricity Company"
                                         />
                                         <CompanyLogoTile
-                                            src="/images/about/huawei.svg"
+                                            src="/images/about/huawei_notext.svg"
                                             alt="Huawei"
                                         />
                                         <CompanyLogoTile
