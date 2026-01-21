@@ -2,64 +2,53 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="relative h-[100dvh] overflow-hidden bg-[var(--bg)]">
+      {/* sparkles */}
+      <div className="pointer-events-none absolute inset-0 opacity-70">
+        <span className="absolute left-[6%] top-[14%] h-1.5 w-1.5 rounded-full bg-white/70 animate-pulse" />
+        <span className="absolute left-[14%] top-[42%] h-1 w-1 rounded-full bg-white/55 animate-pulse [animation-delay:0.7s]" />
+        <span className="absolute left-[28%] top-[22%] h-1 w-1 rounded-full bg-white/60 animate-pulse [animation-delay:1.4s]" />
+        <span className="absolute left-[46%] top-[16%] h-1.5 w-1.5 rounded-full bg-white/55 animate-pulse [animation-delay:1.1s]" />
+        <span className="absolute left-[62%] top-[10%] h-1 w-1 rounded-full bg-white/55 animate-pulse [animation-delay:0.4s]" />
+        <span className="absolute left-[76%] top-[30%] h-1.5 w-1.5 rounded-full bg-white/65 animate-pulse [animation-delay:1.8s]" />
+        <span className="absolute left-[90%] top-[18%] h-1 w-1 rounded-full bg-white/55 animate-pulse [animation-delay:0.9s]" />
+        <span className="absolute left-[86%] top-[46%] h-1.5 w-1.5 rounded-full bg-white/55 animate-pulse [animation-delay:0.2s]" />
+      </div>
+      <div className="flex h-full flex-col">
+
+      {/* Hero text */}
+      <section className="pt-[110px]">
+        <div className="w-full px-10">
+          <div className="mx-auto max-w-[1400px] text-center">
+            <h1 className="text-[64px] leading-[0.92] font-extrabold text-[var(--text)]">
+              Ali Haider
+            </h1>
+            <p className="mt-2 text-[22px] text-[var(--muted)]">
+              Software / Automation / AI Engineer
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Scene (fills remaining viewport height) */}
+      <section className="mt-8 flex-1 min-h-0">
+        <div className="w-full px-10 h-full">
+          <div className="mx-auto max-w-[1400px] h-full">
+            <div className="relative h-full overflow-hidden rounded-[44px] shadow-[var(--shadow-pill)] ">
+
+              <Image
+                src="/images/hero-scene.png"
+                alt="Hero scene"
+                fill
+                priority
+                sizes="(max-width: 1400px) 100vw, 1400px"
+                className="object-cover"
+              />
+            </div>
+          </div>
         </div>
-      </main>
+      </section>
+      </div>
     </div>
   );
 }

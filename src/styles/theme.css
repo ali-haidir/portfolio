@@ -1,0 +1,20 @@
+/* src/styles/theme.css */
+:root{
+  /* Dark futuristic / neon-teal theme */
+  --bg: #070A0F;                 /* page background (midnight) */
+  --surface: #0F172A;            /* pill/background surfaces */
+  --surface-2: #111C2F;          /* buttons/cards */
+
+  --text: #EAF2FF;               /* primary text */
+  --muted: rgba(234, 242, 255, 0.72);
+
+  /* Accents */
+  --accent: #2FE6D6;             /* neon teal */
+  --accent-2: #3B82F6;           /* electric blue */
+  --glow: rgba(47, 230, 214, 0.35);
+
+  /* Shadows (slightly glow-y for dark UI) */
+  --shadow-soft: 0 12px 30px rgba(0,0,0,0.55);
+  --shadow-pill: 0 14px 34px rgba(0,0,0,0.60);
+  --shadow-glow: 0 0 0 1px rgba(47, 230, 214, 0.18), 0 10px 30px rgba(47, 230, 214, 0.14);
+}

@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* src/app/globals.css (or wherever your global file is) */
+@import "../styles/theme.css";
 
 :root {
   --background: #ffffff;
@@ -22,5 +24,39 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Hide scrollbar but keep scrolling */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Disable scrolling (used only on pages that add .no-scroll to html/body) */
+html.no-scroll,
+body.no-scroll {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Hide scrollbar on the WINDOW (html/body) but keep scrolling */
+html.no-scrollbar,
+body.no-scrollbar {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+html.no-scrollbar::-webkit-scrollbar,
+body.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.great-vibes {
+  font-family: var(--font-great-vibes), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 400;
 }
