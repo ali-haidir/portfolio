@@ -165,17 +165,17 @@ export default function AboutPage() {
                                         <div className="absolute inset-[-18px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,240,210,0.14),transparent_65%)] blur-xl" />
 
                                         {/* thick bright ring */}
-                                        <div className="absolute inset-[14px] rounded-full ring-[14px] ring-[var(--text)] shadow-[0_0_120px_rgba(255,240,210,0.45)]" />
+                                        <div className="absolute inset-[14px] rounded-full ring-[8px] sm:ring-[10px] lg:ring-[14px] ring-[var(--text)] shadow-[0_0_60px_rgba(255,240,210,0.25)] sm:shadow-[0_0_90px_rgba(255,240,210,0.35)] lg:shadow-[0_0_120px_rgba(255,240,210,0.45)]" />
 
                                         {/* subtle inner rim */}
-                                        <div className="absolute inset-[26px] rounded-full ring-1 ring-white/12" />
+                                        <div className="absolute inset-[26px] rounded-full ring-[0.5px] sm:ring-1 ring-white/8 sm:ring-white/12" />
 
                                         {/* inner bloom */}
                                         <div className="absolute inset-[34px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,240,210,0.08),transparent_70%)]" />
                                     </div>
 
                                     {/* inner content (placeholder for your photo/video later) */}
-                                    <div className="absolute inset-[34px] overflow-hidden rounded-full bg-[linear-gradient(180deg,rgba(17,28,47,0.95),rgba(7,10,15,0.95))] ring-1 ring-white/10">
+                                    <div className="absolute inset-[34px] overflow-hidden rounded-full bg-[linear-gradient(180deg,rgba(17,28,47,0.95),rgba(7,10,15,0.95))] ring-[0.5px] sm:ring-1 ring-white/6 sm:ring-white/10">
                                         {/* scanlines */}
                                         <div className="pointer-events-none absolute inset-0 opacity-20 [background:repeating-linear-gradient(180deg,rgba(255,255,255,0.14)_0px,rgba(255,255,255,0.14)_1px,transparent_3px,transparent_7px)]" />
 
