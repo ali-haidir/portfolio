@@ -74,7 +74,7 @@ export function ProjectDetailFooter({
   // Overlay mode: sits INSIDE demo section with same stars/bg
   if (mode === "overlay") {
     return (
-      <div className="pointer-events-none absolute inset-x-0 bottom-8">
+      <div className="pointer-events-none absolute inset-x-0 bottom-4 sm:bottom-8">
         <div className="pointer-events-auto">{inner}</div>
       </div>
     );

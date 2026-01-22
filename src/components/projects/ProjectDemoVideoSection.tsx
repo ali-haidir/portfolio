@@ -11,7 +11,7 @@ export function ProjectDemoVideoSection({
     description?: string;
 }) {
     return (
-        <section className="relative py-12 sm:py-16 lg:py-24 xl:py-32 overflow-hidden">
+        <section className="relative py-12 sm:py-16 lg:py-24 xl:py-32 pb-20 sm:pb-16 lg:pb-24 xl:pb-32 overflow-hidden">
             {/* Brighter stars + longer midnight light */}
             <div className="pointer-events-none absolute inset-0">
                 {/* longer + brighter beam */}
@@ -45,7 +45,7 @@ export function ProjectDemoVideoSection({
                     </div>
 
                     {description ? (
-                        <p className="mx-auto mt-6 sm:mt-7 lg:mt-8 max-w-[860px] text-[13px] sm:text-[14px] lg:text-[15px] leading-[1.75] sm:leading-[1.9] lg:leading-[2] text-white/75 px-2 sm:px-0">
+                        <p className="mx-auto mt-6 sm:mt-7 lg:mt-8 mb-16 sm:mb-0 max-w-[860px] text-[13px] sm:text-[14px] lg:text-[15px] leading-[1.75] sm:leading-[1.9] lg:leading-[2] text-white/75 px-2 sm:px-0">
                             {description}
                         </p>
                     ) : null}
