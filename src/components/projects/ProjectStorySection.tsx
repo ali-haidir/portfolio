@@ -25,7 +25,7 @@ export function ProjectStorySection({
   ] as const;
 
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32">
+    <section className="relative overflow-hidden py-12 sm:py-16 lg:py-24 xl:py-32">
       {/* Midnight background + aurora + grain + stars */}
       <div className="pointer-events-none absolute inset-0">
         {/* base midnight */}
@@ -52,22 +52,22 @@ export function ProjectStorySection({
         </div>
       </div>
 
-      <div className="relative mx-auto max-w-[1400px] px-4 sm:px-10">
+      <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
         <div className="mx-auto max-w-[860px] text-center">
           {/* [THE STORY] */}
-          <div className="font-mono text-[12px] sm:text-[13px] tracking-[0.34em] text-white/60">
+          <div className="font-mono text-[10px] sm:text-[11px] md:text-[12px] lg:text-[13px] tracking-[0.30em] sm:tracking-[0.34em] text-white/60">
             [{eyebrow}]
           </div>
 
           {/* story text */}
-          <div className="mt-10 space-y-8 font-mono text-[14px] sm:text-[15px] leading-[2.25] text-white/75">
+          <div className="mt-6 sm:mt-8 lg:mt-10 space-y-5 sm:space-y-6 lg:space-y-8 font-mono text-[13px] sm:text-[14px] lg:text-[15px] leading-[1.9] sm:leading-[2.1] lg:leading-[2.25] text-white/75 px-2 sm:px-0">
             {paragraphs.map((p, idx) => (
               <p key={idx}>{p}</p>
             ))}
           </div>
 
           {/* small baseline divider (helps it feel less empty) */}
-          <div className="mx-auto mt-14 h-px w-[220px] bg-white/10" />
+          <div className="mx-auto mt-8 sm:mt-10 lg:mt-14 h-px w-[180px] sm:w-[200px] lg:w-[220px] bg-white/10" />
         </div>
       </div>
     </section>

@@ -98,10 +98,10 @@ export function FeaturedProjectsCarousel({ items }: { items: FeaturedProject[] }
   }, []);
 
   return (
-    <section ref={sectionRef} className="mt-10">
-      <div className="mx-auto max-w-[1400px] px-4 sm:px-10">
-        <div className="mb-6 text-center">
-          <div className="text-[12px] tracking-[0.32em] text-white/60">
+    <section ref={sectionRef} className="mt-6 sm:mt-8 lg:mt-10">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+        <div className="mb-4 sm:mb-5 lg:mb-6 text-center">
+          <div className="text-[10px] sm:text-[11px] md:text-[12px] tracking-[0.28em] sm:tracking-[0.32em] text-white/60">
             [{items.length} FEATURED PROJECTS]
           </div>
         </div>
@@ -126,7 +126,7 @@ export function FeaturedProjectsCarousel({ items }: { items: FeaturedProject[] }
             className="featured-swiper"
           >
             {items.map((p) => (
-              <SwiperSlide key={p.slug} className="!w-[320px] sm:!w-[520px] lg:!w-[760px]">
+              <SwiperSlide key={p.slug} className="!w-[280px] sm:!w-[360px] md:!w-[420px] lg:!w-[520px] xl:!w-[640px] 2xl:!w-[760px]">
                 <Link href={`/projects/${p.slug}`} className="block">
                   <div className="overflow-hidden rounded-[10px] bg-black/20">
                     <div className="relative aspect-[16/9]">
@@ -141,9 +141,9 @@ export function FeaturedProjectsCarousel({ items }: { items: FeaturedProject[] }
                     </div>
                   </div>
 
-                  <div className="mt-4 flex items-baseline justify-between gap-6">
-                    <div className="text-[12px] tracking-[0.28em] text-white/45">{p.label}</div>
-                    <div className="text-[13px] tracking-[0.18em] text-white/80">{p.title}</div>
+                  <div className="mt-3 sm:mt-4 flex items-baseline justify-between gap-3 sm:gap-4 lg:gap-6">
+                    <div className="text-[10px] sm:text-[11px] md:text-[12px] tracking-[0.24em] sm:tracking-[0.28em] text-white/45 truncate">{p.label}</div>
+                    <div className="text-[11px] sm:text-[12px] md:text-[13px] tracking-[0.16em] sm:tracking-[0.18em] text-white/80 truncate">{p.title}</div>
                   </div>
                 </Link>
               </SwiperSlide>

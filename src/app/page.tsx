@@ -16,38 +16,38 @@ export default function Home() {
       </div>
       <div className="flex h-full flex-col">
 
-      {/* Hero text */}
-      <section className="pt-[110px]">
-        <div className="w-full px-10">
-          <div className="mx-auto max-w-[1400px] text-center">
-            <h1 className="text-[64px] leading-[0.92] font-extrabold text-[var(--text)]">
-              Ali Haider
-            </h1>
-            <p className="mt-2 text-[22px] text-[var(--muted)]">
-              Software / Automation / AI Engineer
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Scene (fills remaining viewport height) */}
-      <section className="mt-8 flex-1 min-h-0">
-        <div className="w-full px-10 h-full">
-          <div className="mx-auto max-w-[1400px] h-full">
-            <div className="relative h-full overflow-hidden rounded-[44px] shadow-[var(--shadow-pill)] ">
-
-              <Image
-                src="/images/hero-scene.png"
-                alt="Hero scene"
-                fill
-                priority
-                sizes="(max-width: 1400px) 100vw, 1400px"
-                className="object-cover"
-              />
+        {/* Hero text */}
+        <section className="pt-[100px] sm:pt-[105px] lg:pt-[110px]">
+          <div className="w-full px-4 sm:px-6 lg:px-10">
+            <div className="mx-auto max-w-[1400px] text-center">
+              <h1 className="text-[36px] sm:text-[48px] lg:text-[64px] leading-[0.92] font-extrabold text-[var(--text)]">
+                Ali Haider
+              </h1>
+              <p className="mt-2 text-[16px] sm:text-[18px] lg:text-[22px] text-[var(--muted)] px-2">
+                Software / Automation / AI Engineer
+              </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Scene (fills remaining viewport height) */}
+        <section className="mt-4 sm:mt-6 lg:mt-8 flex-1 min-h-0">
+          <div className="w-full px-4 sm:px-6 lg:px-10 h-full">
+            <div className="mx-auto max-w-[1400px] h-full">
+              <div className="relative h-full overflow-hidden rounded-[20px] sm:rounded-[28px] lg:rounded-[44px] shadow-[var(--shadow-pill)]">
+
+                <Image
+                  src="/images/hero-scene.png"
+                  alt="Hero scene"
+                  fill
+                  priority
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1400px"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

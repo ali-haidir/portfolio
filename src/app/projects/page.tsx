@@ -33,7 +33,7 @@ export default function ProjectsPage() {
   const lastRow = PROJECTS.slice(cutIndex);     // 1 or 2 cards
 
   return (
-    <div className="min-h-screen bg-[var(--bg)] pt-[50px] sm:pt-[60px] lg:pt-[70px] pb-12 sm:pb-16 lg:pb-20">
+    <div className="min-h-screen bg-[var(--bg)] pt-[100px] sm:pt-[105px] lg:pt-[70px] pb-12 sm:pb-16 lg:pb-20">
       <div className="w-full px-4 sm:px-10">
         <div className="mx-auto max-w-[1400px]">
           <header className="text-center">
