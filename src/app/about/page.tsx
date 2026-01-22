@@ -133,7 +133,7 @@ export default function AboutPage() {
         e.preventDefault();
         const touchY = e.touches[0].clientY;
         const deltaY = startY - touchY; // Positive when swiping up
-        
+
         if (isExpanded) {
             // Swiping down from expanded (deltaY is negative)
             setDragY(Math.max(deltaY, -300));
@@ -146,7 +146,7 @@ export default function AboutPage() {
     const handleTouchEnd = () => {
         setIsDragging(false);
         const threshold = 100;
-        
+
         if (isExpanded) {
             // If swiped down more than threshold, collapse
             if (dragY < -threshold) {
@@ -169,12 +169,12 @@ export default function AboutPage() {
     // Calculate transform based on state and drag
     const getTransform = () => {
         if (!isMounted) return 100; // Start off-screen
-        
+
         if (isExpanded) {
             // When expanded, we use top positioning instead of transform
             return 0;
         }
-        
+
         // When collapsed, show 25% peek (75% hidden)
         const baseTransform = 75;
         const dragOffset = -(dragY / 200) * 75;
@@ -341,25 +341,25 @@ export default function AboutPage() {
                             </section>
 
                             {/* Mobile: Swipeable slide info */}
-                            <section 
+                            <section
                                 ref={slideRef}
                                 className="lg:hidden fixed left-0 right-0 z-40 rounded-t-[28px] bg-[rgba(15,23,42,0.95)] backdrop-blur-xl ring-1 ring-white/15 shadow-[var(--shadow-soft)]"
                                 style={{
-                                    ...(isExpanded 
-                                        ? { 
-                                            top: '90px', 
+                                    ...(isExpanded
+                                        ? {
+                                            top: '90px',
                                             bottom: '0',
                                             transform: `translateY(${dragY > 0 ? dragY : 0}px)`,
                                         }
-                                        : { 
+                                        : {
                                             bottom: '0',
                                             transform: `translateY(${getTransform()}%)`,
                                         }
                                     ),
-                                    transition: isDragging 
-                                        ? 'none' 
-                                        : isMounted 
-                                            ? 'transform 300ms cubic-bezier(0.4, 0, 0.2, 1), top 300ms cubic-bezier(0.4, 0, 0.2, 1)' 
+                                    transition: isDragging
+                                        ? 'none'
+                                        : isMounted
+                                            ? 'transform 300ms cubic-bezier(0.4, 0, 0.2, 1), top 300ms cubic-bezier(0.4, 0, 0.2, 1)'
                                             : 'transform 800ms cubic-bezier(0.4, 0, 0.2, 1), opacity 800ms ease-out',
                                     opacity: isMounted ? 1 : 0,
                                     maxHeight: isExpanded ? 'calc(100vh - 90px)' : 'none',
@@ -369,7 +369,7 @@ export default function AboutPage() {
                                 onTouchEnd={handleTouchEnd}
                             >
                                 {/* Swipe handle */}
-                                <div 
+                                <div
                                     className="flex justify-center pt-3 pb-2 cursor-grab active:cursor-grabbing touch-none"
                                     onTouchStart={(e) => e.stopPropagation()}
                                 >
@@ -407,26 +407,27 @@ export default function AboutPage() {
                                         My work spans building automation tools, data pipelines, reporting dashboards, and web-based applications with AI capabilities—including enterprise chatbots, RAG-based search, and network automation solutions.
                                     </p>
 
-                                    <div className="mt-5">
+                                    <div className="mt-2">
                                         <div className="text-[13px] font-semibold text-white/90">
                                             Reach me at
                                         </div>
                                         <a
                                             href="mailto:khalihaider9@gmail.com"
-                                            className="mt-1 inline-block text-[14px] text-[var(--accent)] decoration-[var(--accent)]/50 underline-offset-4 hover:decoration-[var(--accent)]"
+                                            className="mt-1 inline-block text-[14px] text-[var(--accent)] decoration-[var(--accent)]/50 underline-offset-4 hover:decoration-[var(--accent)] leading-none"
+                                            style={{ minHeight: 'auto', minWidth: 'auto' }}
                                         >
                                             khalihaider9@gmail.com
                                         </a>
                                     </div>
 
                                     {/* Friends / companies */}
-                                    <div className="mt-6">
+                                    <div className="mt-1">
                                         <div className="text-[13px] font-semibold text-white/90">
                                             Some of <span className="text-[var(--accent)] great-vibes text-[28px]">my</span> good friends
                                         </div>
 
                                         {/* Logos row */}
-                                        <div className="mt-4 grid grid-cols-3 gap-4">
+                                        <div className="mt-2 grid grid-cols-3 gap-4">
                                             <CompanyLogoTile
                                                 src="/images/about/seco.svg"
                                                 alt="Saudi Electricity Company"
