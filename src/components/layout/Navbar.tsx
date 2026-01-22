@@ -13,7 +13,7 @@ function Pill({ children, mobile }: { children: React.ReactNode; mobile?: boolea
         rounded-full px-6 py-4
         bg-[var(--surface)]
         shadow-[var(--shadow-pill)]
-        ${mobile ? "px-4 sm:px-5 py-3.5 sm:py-4 w-full max-w-[95%]" : ""}
+        ${mobile ? "px-4 sm:px-5 py-2.5 sm:py-4 w-full max-w-[95%]" : ""}
       `}
     >
       {children}
@@ -191,7 +191,7 @@ function MobileSlidingNavLinks() {
     >
       {/* Sliding indicator behind items */}
       <div
-        className="absolute top-1/2 -translate-y-1/2 h-14 sm:h-16 rounded-full bg-[var(--surface-2)] shadow-[var(--shadow-soft)] transition-all duration-300 ease-out"
+        className="absolute top-1/2 -translate-y-1/2 h-12 sm:h-16 rounded-full bg-[var(--surface-2)] shadow-[var(--shadow-soft)] transition-all duration-300 ease-out"
         style={{
           left: indicator.left,
           width: indicator.width,
@@ -205,7 +205,7 @@ function MobileSlidingNavLinks() {
         ref={(el) => {
           itemRefs.current[0] = el;
         }}
-        className="relative z-10 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full text-[var(--text)] transition-all duration-200 hover:opacity-90 active:scale-95 active:bg-[var(--surface-2)] shrink-0"
+        className="relative z-10 flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-full text-[var(--text)] transition-all duration-200 hover:opacity-90 active:scale-95 active:bg-[var(--surface-2)] shrink-0"
         onMouseEnter={() => moveTo(0)}
         onFocus={() => moveTo(0)}
         aria-label="Home"
@@ -224,7 +224,7 @@ function MobileSlidingNavLinks() {
             ref={(el) => {
               itemRefs.current[idx] = el;
             }}
-            className="relative z-10 flex h-14 sm:h-16 items-center justify-center rounded-full px-4 sm:px-6 flex-1 text-center text-[16px] sm:text-[17px] font-semibold text-[var(--text)] transition-all duration-200 hover:opacity-90 active:scale-95 active:bg-[var(--surface-2)] whitespace-nowrap"
+            className="relative z-10 flex h-12 sm:h-16 items-center justify-center rounded-full px-4 sm:px-6 flex-1 text-center text-[15px] sm:text-[17px] font-semibold text-[var(--text)] transition-all duration-200 hover:opacity-90 active:scale-95 active:bg-[var(--surface-2)] whitespace-nowrap"
             onMouseEnter={() => moveTo(idx)}
             onFocus={() => moveTo(idx)}
           >

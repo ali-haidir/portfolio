@@ -21,7 +21,7 @@ export function ProjectHero({
             </div>
 
             <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
-                <div className="min-h-[calc(100dvh-100px)] sm:min-h-[calc(100dvh-105px)] lg:min-h-[calc(100dvh-110px)] pt-[100px] sm:pt-[105px] lg:pt-[110px] pb-6 sm:pb-8 lg:pb-10 flex flex-col">
+                <div className="min-h-[calc(100dvh-90px)] sm:min-h-[calc(100dvh-105px)] lg:min-h-[calc(100dvh-110px)] pt-[90px] sm:pt-[105px] lg:pt-[110px] pb-6 sm:pb-8 lg:pb-10 flex flex-col">
                     {/* Title */}
                     <div className="flex-1 flex items-center justify-center px-2">
                         <h1 className="text-center font-extrabold tracking-tight text-[28px] sm:text-[40px] md:text-[48px] lg:text-[60px] xl:text-[72px] 2xl:text-[110px] leading-[0.92] text-[var(--text)] break-words">

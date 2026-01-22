@@ -17,7 +17,7 @@ export default function Home() {
       <div className="flex h-full flex-col">
 
         {/* Hero text */}
-        <section className="pt-[100px] sm:pt-[105px] lg:pt-[110px]">
+        <section className="pt-[90px] sm:pt-[105px] lg:pt-[110px]">
           <div className="w-full px-4 sm:px-6 lg:px-10">
             <div className="mx-auto max-w-[1400px] text-center">
               <h1 className="text-[36px] sm:text-[48px] lg:text-[64px] leading-[0.92] font-extrabold text-[var(--text)]">

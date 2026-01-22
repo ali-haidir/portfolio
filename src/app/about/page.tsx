@@ -101,6 +101,7 @@ export default function AboutPage() {
     const [dragY, setDragY] = useState(0);
     const [startY, setStartY] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
     const slideRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -109,6 +110,11 @@ export default function AboutPage() {
 
         document.documentElement.classList.add(sb, ns);
         document.body.classList.add(sb, ns);
+
+        // Trigger slide animation after mount
+        setTimeout(() => {
+            setIsMounted(true);
+        }, 100);
 
         return () => {
             document.documentElement.classList.remove(sb, ns);
@@ -162,12 +168,14 @@ export default function AboutPage() {
 
     // Calculate transform based on state and drag
     const getTransform = () => {
+        if (!isMounted) return 100; // Start off-screen
+        
         const baseTransform = isExpanded ? 0 : 75;
         const dragOffset = isExpanded ? (dragY / 200) * 75 : -(dragY / 200) * 75;
         return Math.max(0, Math.min(75, baseTransform + dragOffset));
     };
     return (
-        <div className="relative min-h-screen bg-[var(--bg)] pt-[100px] sm:pt-[105px] lg:pt-[90px] pb-12 sm:pb-16 lg:pb-20 overflow-hidden">
+        <div className="relative min-h-screen bg-[var(--bg)] pt-[90px] sm:pt-[105px] lg:pt-[90px] pb-12 sm:pb-16 lg:pb-20 overflow-hidden">
             <style jsx global>{`
                 html.no-scroll,
                 body.no-scroll {
@@ -211,8 +219,8 @@ export default function AboutPage() {
                     <div className="lg:min-h-[calc(100dvh-110px)] lg:flex lg:items-center">
                         <div className="grid items-center gap-6 sm:gap-8 lg:gap-10 lg:grid-cols-[550px_1fr] w-full">
                             {/* Mobile: Image first (order-1), Desktop: Image second (order-2 on lg) */}
-                            <section className="relative flex items-center justify-center order-1 lg:order-2 mt-4 sm:mt-6 lg:mt-0 lg:translate-x-12">
-                                <div className="relative h-[320px] w-[320px] sm:h-[300px] sm:w-[300px] md:h-[360px] md:w-[360px] lg:h-[440px] lg:w-[440px] xl:h-[520px] xl:w-[520px]">
+                            <section className="relative flex items-center justify-center order-1 lg:order-2 mt-8 sm:mt-10 lg:mt-0 lg:translate-x-12">
+                                <div className="relative h-[380px] w-[380px] sm:h-[360px] sm:w-[360px] md:h-[400px] md:w-[400px] lg:h-[440px] lg:w-[440px] xl:h-[520px] xl:w-[520px]">
                                     {/* Ring light halo + thick luminous ring (design style) */}
                                     <div className="pointer-events-none absolute inset-0">
                                         {/* soft outer halo */}
@@ -329,9 +337,15 @@ export default function AboutPage() {
                             {/* Mobile: Swipeable slide info */}
                             <section 
                                 ref={slideRef}
-                                className="lg:hidden fixed bottom-0 left-0 right-0 z-40 rounded-t-[28px] bg-[rgba(15,23,42,0.95)] backdrop-blur-xl ring-1 ring-white/15 shadow-[var(--shadow-soft)] transition-transform duration-300 ease-out"
+                                className="lg:hidden fixed bottom-0 left-0 right-0 z-40 rounded-t-[28px] bg-[rgba(15,23,42,0.95)] backdrop-blur-xl ring-1 ring-white/15 shadow-[var(--shadow-soft)]"
                                 style={{
                                     transform: `translateY(${getTransform()}%)`,
+                                    transition: isDragging 
+                                        ? 'none' 
+                                        : isMounted 
+                                            ? 'transform 300ms cubic-bezier(0.4, 0, 0.2, 1)' 
+                                            : 'transform 800ms cubic-bezier(0.4, 0, 0.2, 1), opacity 800ms ease-out',
+                                    opacity: isMounted ? 1 : 0,
                                 }}
                                 onTouchStart={handleTouchStart}
                                 onTouchMove={handleTouchMove}
