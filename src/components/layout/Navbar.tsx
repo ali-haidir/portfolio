@@ -13,7 +13,7 @@ function Pill({ children, mobile }: { children: React.ReactNode; mobile?: boolea
         rounded-full px-6 py-4
         bg-[var(--surface)]
         shadow-[var(--shadow-pill)]
-        ${mobile ? "px-4 sm:px-5 py-2.5 sm:py-4 w-full max-w-[95%]" : ""}
+        ${mobile ? "px-0.5 sm:px-1 py-2.5 sm:py-4 w-full max-w-[90%]" : ""}
       `}
     >
       {children}
@@ -186,7 +186,7 @@ function MobileSlidingNavLinks() {
   return (
     <div
       ref={containerRef}
-      className="relative flex items-center gap-2 sm:gap-3 justify-center w-full"
+      className="relative flex items-center gap-5 justify-center w-full"
       onMouseLeave={() => moveTo(0)}
     >
       {/* Sliding indicator behind items */}
@@ -224,7 +224,7 @@ function MobileSlidingNavLinks() {
             ref={(el) => {
               itemRefs.current[idx] = el;
             }}
-            className="relative z-10 flex h-12 sm:h-16 items-center justify-center rounded-full px-4 sm:px-6 flex-1 text-center text-[15px] sm:text-[17px] font-semibold text-[var(--text)] transition-all duration-200 hover:opacity-90 active:scale-95 active:bg-[var(--surface-2)] whitespace-nowrap"
+            className="relative z-10 flex h-12 sm:h-16 items-center justify-center rounded-full px-3 sm:px-5 text-center text-[15px] sm:text-[17px] font-semibold text-[var(--text)] transition-all duration-200 hover:opacity-90 active:scale-95 active:bg-[var(--surface-2)] whitespace-nowrap shrink-0"
             onMouseEnter={() => moveTo(idx)}
             onFocus={() => moveTo(idx)}
           >
@@ -256,7 +256,7 @@ export function Navbar() {
         </div>
 
         {/* Mobile Navbar - Centered tabs (no hamburger) */}
-        <div className="lg:hidden flex items-center justify-center w-full px-2 sm:px-4">
+        <div className="lg:hidden flex items-center justify-center w-full px-0.5 sm:px-1">
           <Pill mobile>
             <MobileSlidingNavLinks />
           </Pill>

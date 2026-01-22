@@ -135,10 +135,10 @@ export default function AboutPage() {
         const deltaY = startY - touchY; // Positive when swiping up
         
         if (isExpanded) {
-            // Swiping down from expanded
-            setDragY(Math.max(deltaY, -200));
+            // Swiping down from expanded (deltaY is negative)
+            setDragY(Math.max(deltaY, -300));
         } else {
-            // Swiping up from collapsed
+            // Swiping up from collapsed (deltaY is positive)
             setDragY(Math.min(deltaY, 200));
         }
     };
@@ -170,8 +170,14 @@ export default function AboutPage() {
     const getTransform = () => {
         if (!isMounted) return 100; // Start off-screen
         
-        const baseTransform = isExpanded ? 0 : 75;
-        const dragOffset = isExpanded ? (dragY / 200) * 75 : -(dragY / 200) * 75;
+        if (isExpanded) {
+            // When expanded, we use top positioning instead of transform
+            return 0;
+        }
+        
+        // When collapsed, show 25% peek (75% hidden)
+        const baseTransform = 75;
+        const dragOffset = -(dragY / 200) * 75;
         return Math.max(0, Math.min(75, baseTransform + dragOffset));
     };
     return (
@@ -337,15 +343,26 @@ export default function AboutPage() {
                             {/* Mobile: Swipeable slide info */}
                             <section 
                                 ref={slideRef}
-                                className="lg:hidden fixed bottom-0 left-0 right-0 z-40 rounded-t-[28px] bg-[rgba(15,23,42,0.95)] backdrop-blur-xl ring-1 ring-white/15 shadow-[var(--shadow-soft)]"
+                                className="lg:hidden fixed left-0 right-0 z-40 rounded-t-[28px] bg-[rgba(15,23,42,0.95)] backdrop-blur-xl ring-1 ring-white/15 shadow-[var(--shadow-soft)]"
                                 style={{
-                                    transform: `translateY(${getTransform()}%)`,
+                                    ...(isExpanded 
+                                        ? { 
+                                            top: '90px', 
+                                            bottom: '0',
+                                            transform: `translateY(${dragY > 0 ? dragY : 0}px)`,
+                                        }
+                                        : { 
+                                            bottom: '0',
+                                            transform: `translateY(${getTransform()}%)`,
+                                        }
+                                    ),
                                     transition: isDragging 
                                         ? 'none' 
                                         : isMounted 
-                                            ? 'transform 300ms cubic-bezier(0.4, 0, 0.2, 1)' 
+                                            ? 'transform 300ms cubic-bezier(0.4, 0, 0.2, 1), top 300ms cubic-bezier(0.4, 0, 0.2, 1)' 
                                             : 'transform 800ms cubic-bezier(0.4, 0, 0.2, 1), opacity 800ms ease-out',
                                     opacity: isMounted ? 1 : 0,
+                                    maxHeight: isExpanded ? 'calc(100vh - 90px)' : 'none',
                                 }}
                                 onTouchStart={handleTouchStart}
                                 onTouchMove={handleTouchMove}
