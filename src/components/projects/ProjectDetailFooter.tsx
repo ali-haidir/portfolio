@@ -25,7 +25,7 @@ export function ProjectDetailFooter({
     "bg-transparent transition hover:ring-white/25";
 
   const inner = (
-    <div className="mx-auto max-w-[1400px] px-4 sm:px-10">
+    <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
       <div className="relative flex items-center justify-center">
         {/* Center arrow */}
         <button
@@ -34,13 +34,13 @@ export function ProjectDetailFooter({
           aria-label="Back to top"
           title="Back to top"
           className={pillClass}
-          style={{ minWidth: arrowMin, minHeight: arrowMin }}
+          style={{ minWidth: Math.max(arrowMin, 44), minHeight: Math.max(arrowMin, 44) }}
         >
-          <FaArrowUp className="h-5 w-5 text-white/80" />
+          <FaArrowUp className="h-4 w-4 sm:h-5 sm:w-5 text-white/80" />
         </button>
 
         {/* Right pills */}
-        <div className="absolute right-0 flex items-center gap-3">
+        <div className="absolute right-0 flex items-center gap-2 sm:gap-3">
           <Link
             href={linkedinUrl}
             target="_blank"
@@ -48,9 +48,9 @@ export function ProjectDetailFooter({
             aria-label="Open LinkedIn"
             title="LinkedIn"
             className={pillClass}
-            style={{ minWidth: pillMin, minHeight: pillMin }}
+            style={{ minWidth: Math.max(pillMin, 44), minHeight: Math.max(pillMin, 44) }}
           >
-            <Linkedin className="h-5 w-5 text-white/80" />
+            <Linkedin className="h-4 w-4 sm:h-5 sm:w-5 text-white/80" />
           </Link>
 
           {githubUrl ? (
@@ -61,9 +61,9 @@ export function ProjectDetailFooter({
               aria-label="Open GitHub repo"
               title="GitHub"
               className={pillClass}
-              style={{ minWidth: pillMin, minHeight: pillMin }}
+              style={{ minWidth: Math.max(pillMin, 44), minHeight: Math.max(pillMin, 44) }}
             >
-              <Github className="h-5 w-5 text-white/80" />
+              <Github className="h-4 w-4 sm:h-5 sm:w-5 text-white/80" />
             </Link>
           ) : null}
         </div>

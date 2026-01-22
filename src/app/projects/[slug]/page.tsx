@@ -28,7 +28,7 @@ export default async function ProjectDetailPage({
       <ProjectHero title={project.title} meta={project.heroMeta} />
 
       {/* Carousel section */}
-      <section className="mx-auto max-w-[1400px] px-4 sm:px-10 pt-10 pb-10">
+      <section className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 pt-6 sm:pt-8 lg:pt-10 pb-6 sm:pb-8 lg:pb-10">
         <ProjectMediaCarousel
           items={project.media?.length ? project.media : [project.image]}
           autoplayMs={3200}

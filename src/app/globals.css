@@ -60,3 +60,26 @@ body.no-scrollbar::-webkit-scrollbar {
   font-family: var(--font-great-vibes), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   font-weight: 400;
 }
+
+/* Line clamp utilities for text truncation */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Touch target improvements for mobile */
+@media (max-width: 640px) {
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Allow exceptions for specific cases */
+  .pmc-btn,
+  [class*="h-"]:not([class*="min-h"]):not([class*="max-h"]) {
+    min-height: auto;
+    min-width: auto;
+  }
+}

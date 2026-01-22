@@ -64,11 +64,11 @@ export function ProjectMediaCarousel({
             type="button"
             aria-label="Previous image"
             disabled={atStart}
-            className={`pmc-btn absolute left-5 top-1/2 z-10 -translate-y-1/2 transition-opacity ${
+            className={`pmc-btn absolute left-2 sm:left-4 lg:left-5 top-1/2 z-10 -translate-y-1/2 transition-opacity ${
               atStart ? "opacity-0 pointer-events-none" : "opacity-100"
             }`}
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
 
           <button
@@ -76,11 +76,11 @@ export function ProjectMediaCarousel({
             type="button"
             aria-label="Next image"
             disabled={atEnd}
-            className={`pmc-btn absolute right-5 top-1/2 z-10 -translate-y-1/2 transition-opacity ${
+            className={`pmc-btn absolute right-2 sm:right-4 lg:right-5 top-1/2 z-10 -translate-y-1/2 transition-opacity ${
               atEnd ? "opacity-0 pointer-events-none" : "opacity-100"
             }`}
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
         </>
       )}
@@ -154,8 +154,10 @@ export function ProjectMediaCarousel({
 
       <style jsx global>{`
         .pmc-btn {
-          height: 44px;
-          width: 44px;
+          height: 40px;
+          width: 40px;
+          min-height: 40px;
+          min-width: 40px;
           border-radius: 9999px;
           display: inline-flex;
           align-items: center;
@@ -167,9 +169,20 @@ export function ProjectMediaCarousel({
           -webkit-backdrop-filter: blur(10px);
           transition: transform 180ms ease, background 180ms ease, opacity 180ms ease;
         }
+        @media (min-width: 640px) {
+          .pmc-btn {
+            height: 44px;
+            width: 44px;
+            min-height: 44px;
+            min-width: 44px;
+          }
+        }
         .pmc-btn:hover {
           transform: scale(1.06);
           background: rgba(10, 18, 48, 0.78);
+        }
+        .pmc-btn:active {
+          transform: scale(0.98);
         }
       `}</style>
     </div>

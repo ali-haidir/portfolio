@@ -29,13 +29,13 @@ export function ProjectCard({ project }: { project: ProjectDetail }) {
       </div>
 
       {/* Title + optional subtitle */}
-      <div className="p-5">
-        <h3 className="text-[16px] font-semibold text-[var(--text)] transition-colors group-hover:text-[var(--accent)]">
+      <div className="p-4 sm:p-5">
+        <h3 className="text-[14px] sm:text-[15px] lg:text-[16px] font-semibold text-[var(--text)] transition-colors group-hover:text-[var(--accent)] line-clamp-2">
           {project.title}
         </h3>
 
         {project.subtitle ? (
-          <p className="mt-1 text-[13px] text-[var(--muted)]">{project.subtitle}</p>
+          <p className="mt-1 text-[12px] sm:text-[13px] text-[var(--muted)] line-clamp-2">{project.subtitle}</p>
         ) : null}
       </div>
     </Link>

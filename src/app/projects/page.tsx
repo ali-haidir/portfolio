@@ -33,20 +33,20 @@ export default function ProjectsPage() {
   const lastRow = PROJECTS.slice(cutIndex);     // 1 or 2 cards
 
   return (
-    <div className="min-h-screen bg-[var(--bg)] pt-[50px] pb-20">
+    <div className="min-h-screen bg-[var(--bg)] pt-[50px] sm:pt-[60px] lg:pt-[70px] pb-12 sm:pb-16 lg:pb-20">
       <div className="w-full px-4 sm:px-10">
         <div className="mx-auto max-w-[1400px]">
           <header className="text-center">
-            <h1 className="text-[46px] font-extrabold text-[var(--text)]">
+            <h1 className="text-[32px] sm:text-[40px] lg:text-[46px] font-extrabold text-[var(--text)]">
               Projects
             </h1>
           </header>
 
-          <div className="mt-10">
+          <div className="mt-6 sm:mt-8 lg:mt-10">
             <FeaturedProjectsCarousel items={featuredItems} />
           </div>
 
-          <h2 className="mt-10 text-[30px] font-extrabold text-center text-[var(--text)]">
+          <h2 className="mt-8 sm:mt-9 lg:mt-10 text-[24px] sm:text-[28px] lg:text-[30px] font-extrabold text-center text-[var(--text)]">
             All Projects
           </h2>
 
