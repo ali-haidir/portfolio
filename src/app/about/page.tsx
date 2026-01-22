@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Github, Linkedin } from "lucide-react";
@@ -97,6 +97,12 @@ function ResumePill({ href }: { href: string }) {
 }
 
 export default function AboutPage() {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [dragY, setDragY] = useState(0);
+    const [startY, setStartY] = useState(0);
+    const [isDragging, setIsDragging] = useState(false);
+    const slideRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
         const sb = "no-scrollbar";
         const ns = "no-scroll";
@@ -109,6 +115,57 @@ export default function AboutPage() {
             document.body.classList.remove(sb, ns);
         };
     }, []);
+
+    const handleTouchStart = (e: React.TouchEvent) => {
+        setIsDragging(true);
+        setStartY(e.touches[0].clientY);
+        setDragY(0);
+    };
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const touchY = e.touches[0].clientY;
+        const deltaY = startY - touchY; // Positive when swiping up
+        
+        if (isExpanded) {
+            // Swiping down from expanded
+            setDragY(Math.max(deltaY, -200));
+        } else {
+            // Swiping up from collapsed
+            setDragY(Math.min(deltaY, 200));
+        }
+    };
+
+    const handleTouchEnd = () => {
+        setIsDragging(false);
+        const threshold = 100;
+        
+        if (isExpanded) {
+            // If swiped down more than threshold, collapse
+            if (dragY < -threshold) {
+                setIsExpanded(false);
+            }
+        } else {
+            // If swiped up more than threshold, expand
+            if (dragY > threshold) {
+                setIsExpanded(true);
+            }
+        }
+        setDragY(0);
+    };
+
+    const toggleSlide = () => {
+        setIsExpanded(!isExpanded);
+        setDragY(0);
+    };
+
+    // Calculate transform based on state and drag
+    const getTransform = () => {
+        const baseTransform = isExpanded ? 0 : 75;
+        const dragOffset = isExpanded ? (dragY / 200) * 75 : -(dragY / 200) * 75;
+        return Math.max(0, Math.min(75, baseTransform + dragOffset));
+    };
     return (
         <div className="relative min-h-screen bg-[var(--bg)] pt-[100px] sm:pt-[105px] lg:pt-[90px] pb-12 sm:pb-16 lg:pb-20 overflow-hidden">
             <style jsx global>{`
@@ -155,7 +212,7 @@ export default function AboutPage() {
                         <div className="grid items-center gap-6 sm:gap-8 lg:gap-10 lg:grid-cols-[550px_1fr] w-full">
                             {/* Mobile: Image first (order-1), Desktop: Image second (order-2 on lg) */}
                             <section className="relative flex items-center justify-center order-1 lg:order-2 mt-4 sm:mt-6 lg:mt-0 lg:translate-x-12">
-                                <div className="relative h-[240px] w-[240px] sm:h-[300px] sm:w-[300px] md:h-[360px] md:w-[360px] lg:h-[440px] lg:w-[440px] xl:h-[520px] xl:w-[520px]">
+                                <div className="relative h-[320px] w-[320px] sm:h-[300px] sm:w-[300px] md:h-[360px] md:w-[360px] lg:h-[440px] lg:w-[440px] xl:h-[520px] xl:w-[520px]">
                                     {/* Ring light halo + thick luminous ring (design style) */}
                                     <div className="pointer-events-none absolute inset-0">
                                         {/* soft outer halo */}
@@ -206,14 +263,15 @@ export default function AboutPage() {
                             </section>
 
                             {/* Mobile: Info card second (order-2), Desktop: Info card first (order-1 on lg) */}
-                            <section className="rounded-[20px] sm:rounded-[24px] lg:rounded-[28px] bg-[var(--surface-2)]/70 backdrop-blur-md ring-1 ring-white/10 shadow-[var(--shadow-soft)] p-5 sm:p-6 lg:p-7 xl:p-8 order-2 lg:order-1">
-                                {/* Header row: Hello + socials */}
-                                <div className="flex items-start justify-between gap-3 sm:gap-4 pb-4">
-                                    <h1 className="text-[40px] sm:text-[48px] lg:text-[56px] leading-[0.95] font-extrabold text-[var(--text)]">
+                            {/* Desktop: Normal card */}
+                            <section className="hidden lg:block rounded-[28px] bg-[var(--surface-2)]/70 backdrop-blur-md ring-1 ring-white/10 shadow-[var(--shadow-soft)] p-7 xl:p-8 order-1">
+                                {/* Desktop content */}
+                                <div className="flex items-start justify-between gap-4 pb-4">
+                                    <h1 className="text-[56px] leading-[0.95] font-extrabold text-[var(--text)]">
                                         Hello!
                                     </h1>
 
-                                    <div className="flex items-center gap-2 sm:gap-3">
+                                    <div className="flex items-center gap-3">
                                         <IconPill href="https://www.linkedin.com/in/ali-hydir/" label="LinkedIn">
                                             <Linkedin className="h-5 w-5" />
                                         </IconPill>
@@ -226,11 +284,11 @@ export default function AboutPage() {
                                     </div>
                                 </div>
 
-                                <p className="mt-4 sm:mt-5 text-[13px] sm:text-[14px] leading-[1.75] sm:leading-7 text-white/90">
+                                <p className="mt-5 text-[14px] leading-7 text-white/90">
                                     Ali Haider is a software engineer who builds end-to-end solutions that simplify work and connect systems. He started with backend development and grew into automation and data-focused projects that reduce manual effort.
                                 </p>
 
-                                <p className="mt-2 text-[13px] sm:text-[14px] leading-[1.75] sm:leading-7 text-white/90">
+                                <p className="mt-2 text-[14px] leading-7 text-white/90">
                                     My work spans building automation tools, data pipelines, reporting dashboards, and web-based applications with AI capabilities—including enterprise chatbots, RAG-based search, and network automation solutions.
                                 </p>
 
@@ -246,13 +304,11 @@ export default function AboutPage() {
                                     </a>
                                 </div>
 
-                                {/* Friends / companies */}
                                 <div className="mt-5">
                                     <div className="text-[13px] font-semibold text-[var(--text)]">
                                         Some of <span className="text-[var(--accent)] great-vibes text-[28px]">my</span> good friends
                                     </div>
 
-                                    {/* Logos row */}
                                     <div className="mt-4 grid grid-cols-3 gap-4">
                                         <CompanyLogoTile
                                             src="/images/about/seco.svg"
@@ -266,6 +322,93 @@ export default function AboutPage() {
                                             src="/images/about/stc.svg"
                                             alt="STC"
                                         />
+                                    </div>
+                                </div>
+                            </section>
+
+                            {/* Mobile: Swipeable slide info */}
+                            <section 
+                                ref={slideRef}
+                                className="lg:hidden fixed bottom-0 left-0 right-0 z-40 rounded-t-[28px] bg-[rgba(15,23,42,0.95)] backdrop-blur-xl ring-1 ring-white/15 shadow-[var(--shadow-soft)] transition-transform duration-300 ease-out"
+                                style={{
+                                    transform: `translateY(${getTransform()}%)`,
+                                }}
+                                onTouchStart={handleTouchStart}
+                                onTouchMove={handleTouchMove}
+                                onTouchEnd={handleTouchEnd}
+                            >
+                                {/* Swipe handle */}
+                                <div 
+                                    className="flex justify-center pt-3 pb-2 cursor-grab active:cursor-grabbing touch-none"
+                                    onTouchStart={(e) => e.stopPropagation()}
+                                >
+                                    <div className="w-12 h-1.5 rounded-full bg-white/30" />
+                                </div>
+
+                                <div className="px-5 pb-8 max-h-[85vh] overflow-y-auto">
+                                    {/* Header row: Hello + socials */}
+                                    <div className="flex items-start justify-between gap-3 pb-4">
+                                        <div>
+                                            <div className="text-[12px] tracking-[0.28em] text-white/60 mb-1">ABOUT</div>
+                                            <h1 className="text-[40px] leading-[0.95] font-extrabold text-white/95">
+                                                Hello!
+                                            </h1>
+                                        </div>
+
+                                        <div className="flex items-center gap-2">
+                                            <IconPill href="https://www.linkedin.com/in/ali-hydir/" label="LinkedIn">
+                                                <Linkedin className="h-5 w-5" />
+                                            </IconPill>
+
+                                            <IconPill href="https://github.com/ali-haidir" label="GitHub">
+                                                <Github className="h-5 w-5" />
+                                            </IconPill>
+
+                                            <ResumePill href="/Ali%20Haider.pdf" />
+                                        </div>
+                                    </div>
+
+                                    <p className="mt-4 text-[14px] leading-[1.8] text-white/85">
+                                        Ali Haider is a software engineer who builds end-to-end solutions that simplify work and connect systems. He started with backend development and grew into automation and data-focused projects that reduce manual effort.
+                                    </p>
+
+                                    <p className="mt-3 text-[14px] leading-[1.8] text-white/85">
+                                        My work spans building automation tools, data pipelines, reporting dashboards, and web-based applications with AI capabilities—including enterprise chatbots, RAG-based search, and network automation solutions.
+                                    </p>
+
+                                    <div className="mt-5">
+                                        <div className="text-[13px] font-semibold text-white/90">
+                                            Reach me at
+                                        </div>
+                                        <a
+                                            href="mailto:khalihaider9@gmail.com"
+                                            className="mt-1 inline-block text-[14px] text-[var(--accent)] decoration-[var(--accent)]/50 underline-offset-4 hover:decoration-[var(--accent)]"
+                                        >
+                                            khalihaider9@gmail.com
+                                        </a>
+                                    </div>
+
+                                    {/* Friends / companies */}
+                                    <div className="mt-6">
+                                        <div className="text-[13px] font-semibold text-white/90">
+                                            Some of <span className="text-[var(--accent)] great-vibes text-[28px]">my</span> good friends
+                                        </div>
+
+                                        {/* Logos row */}
+                                        <div className="mt-4 grid grid-cols-3 gap-4">
+                                            <CompanyLogoTile
+                                                src="/images/about/seco.svg"
+                                                alt="Saudi Electricity Company"
+                                            />
+                                            <CompanyLogoTile
+                                                src="/images/about/huawei_notext.svg"
+                                                alt="Huawei"
+                                            />
+                                            <CompanyLogoTile
+                                                src="/images/about/stc.svg"
+                                                alt="STC"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </section>
