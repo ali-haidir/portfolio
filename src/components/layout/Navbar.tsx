@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Mail } from "lucide-react";
 import { primaryNav, resumeHref, contactEmail } from "@/config/nav";
 import { useEffect, useRef, useState } from "react";
+import { FaLinkedinIn } from "react-icons/fa";
+
 
 function Pill({ children, mobile }: { children: React.ReactNode; mobile?: boolean }) {
   return (
@@ -249,8 +251,8 @@ export function Navbar() {
 
           <div className="flex items-center gap-4">
             <ResumeButton />
-            <IconButton href={contactEmail} label="Email">
-              <Mail className="h-6 w-6" />
+            <IconButton href={"https://www.linkedin.com/in/ali-hydir/"} label="linkedin">
+              <FaLinkedinIn className="h-6 w-6" />
             </IconButton>
           </div>
         </div>
