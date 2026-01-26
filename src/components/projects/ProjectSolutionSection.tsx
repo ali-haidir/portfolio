@@ -68,7 +68,7 @@ export function ProjectSolutionSection({
 
                         <div className="rounded-[18px] sm:rounded-[20px] lg:rounded-[22px] bg-white/[0.04] p-5 sm:p-6 lg:p-7 ring-1 ring-white/10 flex flex-col min-h-[280px] sm:min-h-[320px] lg:min-h-[360px]">
                             <div className="font-mono text-[10px] sm:text-[11px] lg:text-[12px] tracking-[0.28em] sm:tracking-[0.32em] text-white/55">
-                                [LANGUAGES]
+                                [ARCHITECTURE]
                             </div>
 
                             {/* Center pills vertically */}

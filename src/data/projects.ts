@@ -1,8 +1,13 @@
 // src/data/projects.ts
 
 import type { IconType } from "react-icons";
-import { FaDocker , FaPython } from "react-icons/fa";
-import { SiTypescript, SiFastapi } from "react-icons/si";
+import { FaDocker , FaPython ,FaMicrochip , FaTelegram , FaMapMarkedAlt} from "react-icons/fa";
+import { SiTypescript, SiFastapi , SiChromatic , SiSelenium, SiMysql , SiNextdotjs , SiN8N, SiJavascript} from "react-icons/si";
+import { BiLogoPostgresql } from "react-icons/bi";
+import { IoIosTimer } from "react-icons/io";
+
+import { GiFlatPlatform } from "react-icons/gi";
+
 
 
 export type ProjectMetaItem = {
@@ -67,27 +72,30 @@ export type ProjectDemoVideo = {
 
 export const PROJECTS: ProjectDetail[] = [
   {
-    slug: "rag-document-search",
-    title: "RAG DOCUMENT SEARCH PLATFORM",
-    subtitle: "Hybrid retrieval (BM25 + Vectors) with citations",
-    image: "/images/projects/placeholder.jpeg",
+    slug: "intelliRetrieval",
+    title: "Intelligent Search",
+    subtitle: "Hybrid Rag (BM25 + Vectors) with citations",
+    image: "/images/projects/rag/rag_frontend.png",
     featured: true,
     heroMeta: [
       { label: "DELIVERABLES", value: "PLATFORM" },
-      { label: "IMPACT", value: "Talk to LLD" },
+      { label: "IMPACT", value: "Knowledge Fusion" },
       { label: "ROLE", value: "Solution Architect" },
       { label: "SERVICES", value: "RAG • OBSERVABILITY • AI" },
     ],
     media: [
-      "/images/projects/placeholder.jpeg",
-      "/images/projects/placeholder.jpeg",
-      "/images/projects/placeholder.jpeg",
+      "/images/projects/rag/rag_chat_3.png",
+      "/images/projects/rag/rag_qs_ans.png",
+      "/images/projects/rag/rag_ingest.png",
+      "/images/projects/rag/rag_settings.png",
+      "/images/projects/rag/rag_qs_ans_2.png",
+      "/images/projects/rag/query_flow_diagram.png"
     ],
     story: {
       eyebrow: "THE STORY",
       paragraphs: [
-        "This project started as a practical need: make scattered documents searchable and usable during day-to-day work.",
-        "I built a hybrid retrieval flow (BM25 + embeddings) with clean citations, and a structure that can scale from personal docs to team knowledge bases.",
+        "This project started as a practical need: make scattered documents (e.g. manuals, LLDs , reports, etc.) searchable and usable during day-to-day work.",
+        "Solution is intelliSearch, ahybrid retrieval flow (BM25 + embeddings) with clean citations, and a structure that can scale from personal docs to team knowledge bases.",
         "The result is a fast, explainable search experience that feels like an internal assistant—grounded, auditable, and easy to extend.",
       ],
     },
@@ -96,26 +104,31 @@ export const PROJECTS: ProjectDetail[] = [
         "A hybrid RAG platform combining structured chunking, fast retrieval, and citation-ready answers—optimized for reliability and scale.",
       languages: [
         { name: "Python", icon: FaPython },
-        { name: "TypeScript", icon: SiTypescript },
         { name: "Docker", icon: FaDocker },
-        { name: "FastAPI", icon: SiFastapi },
+        { name: "TypeScript", icon: SiTypescript },
+        { name: "LocalAI", icon: SiFastapi },
+        { name: "Vector store", icon: SiChromatic},
+        { name: "Microservices", icon: FaMicrochip},
+
+        
       ],
       specsTitle: "Development Specifications",
       specs: [
-        { label: "Chunk size", value: "800 tokens" },
+        { label: "Chunk size", value: "500 tokens" },
         { label: "Overlap", value: "120 tokens" },
-        { label: "Chunk strategy", value: "Recursive splitter (headings-aware)" },
+        { label: "Chunk strategy", value: "Fixed-size" },
         { label: "Vector store", value: "Chroma (HNSW)" },
         { label: "Keyword search", value: "BM25 (OpenSearch)" },
         { label: "Reranking", value: "Hybrid scoring (BM25 + cosine)" },
+        { label: "Retreval", value: "Neighbours Aware" }
       ],
-      githubUrl: "https://github.com/ali-haidir/REPO_NAME",
+      githubUrl: "https://github.com/ali-haidir/REPO_NAME",  //change here to the actual github repo
     },
     userFlow: {
       title: "USER FLOW",
-      image: "/images/projects/placeholder.jpeg",
+      image: "/images/projects/rag/simple_flow.png",
       description:
-        "End-to-end flow from upload → retrieval → answer with citations. Lorem sahdkajsakhsdalksjdklals djaslk jdalks dkljaskdj aslkjdklasj dlkjaskdljaakjsdlksjdklajsdlkj aslkj ajsd ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos ashdksajhdkja.",
+        "User submits question → Hybrid retrieval (BM25 + vector search) → Context building → LLM generates answer → Answer returned with citations",
       bullets: [
         "Upload / ingest documents",
         "Chunking + embeddings + indexing",
@@ -125,96 +138,190 @@ export const PROJECTS: ProjectDetail[] = [
     },  
     demoVideo: {
       title: "WORKING DEMO",
-      video: "/videos/demo-placeholder.mp4",
-      poster: "/images/projects/placeholder.jpeg",
+      video: "/images/projects/rag/demo_video.mov",
+      poster: "/images/projects/rag/rag_qs_ans_2.png",
       description:
         "Short walkthrough showing ingestion → search → cited answers in real-time.",
     },
   },
 
   {
-    slug: "webex-notifier",
-    title: "WEBEX NOTIFIER MICROSERVICE",
-    subtitle: "FastAPI service for room/user notifications",
-    image: "/images/projects/placeholder.jpeg",
+    slug: "balady-automation",
+    title: "Baladiya Automation & Risk Guard",
+    subtitle: "Automated excavation approvals",
+    image: "/images/projects/ripc/main_page.png",
     featured: true,
     heroMeta: [
-      { label: "DELIVERABLES", value: "MICROSERVICE" },
-      { label: "IMPACT", value: "Faster incident comms" },
-      { label: "ROLE", value: "Backend Engineer" },
-      { label: "SERVICES", value: "INTEGRATIONS • EVENTS • NOTIFICATIONS" },
+      { label: "DELIVERABLES", value: "PLATFORM" },
+      { label: "IMPACT", value: "Reliability" },
+      { label: "ROLE", value: "Automation Engineer" },
+      { label: "SERVICES", value: "SCRAPING • OTP • Handling" },
     ],
     media: [
-      "/images/projects/placeholder.jpeg",
-      "/images/projects/placeholder.jpeg",
-      "/images/projects/placeholder.jpeg",
+      "/images/projects/ripc/main_page.png",
+      "/images/projects/ripc/otp_page.png",
+      "/images/projects/ripc/request_details.jpeg",
+      "/images/projects/ripc/request_major_details.jpeg",
+      "/images/projects/ripc/requests.jpeg"
     ],
-    story: {
-      eyebrow: "THE STORY",
-      paragraphs: ["This is the story of the project", "This is the story of the project"],
-    },
+    story: { eyebrow: "THE STORY", paragraphs: ["Thousands of excavation requests arrive daily, and approving the wrong one can cut provider’s fiber and trigger major outages. I built an end-to-end automation that logs into the government Baladiya portal, pulls new requests, checks each request’s lat/long against our topology within a safety radius, then auto-accepts, rejects, or raises a joint-visit case. ", "Result: faster approvals, fewer outages, and reduced operational workload and joint visits."] },
     solution: {
       description:
-        "A lightweight notification service that sends messages to Webex rooms/users, designed for reliability and quick integration.",
+        "An automated approval system that evaluates government excavation requests against telecom topology to prevent cable damage, streamline responses, and coordinate joint site visits when uncertainty exists.",
       languages: [
-        { name: "Python", icon: FaDocker },
-        { name: "Docker", icon: FaDocker },
+        { name: "Python", icon: FaPython },
+        { name: "Selenium", icon: SiSelenium },
+        { name: "Rest Apis", icon: SiFastapi },
+        { name: "Nextjs", icon: SiNextdotjs },
+        { name: "Telegram Bot", icon: FaTelegram},
+        { name: "Gis", icon: FaMapMarkedAlt},
+
+        
       ],
+      specsTitle: "Development Specifications",
       specs: [
-        { label: "Framework", value: "FastAPI + Uvicorn" },
-        { label: "Delivery", value: "Webex REST API" },
-        { label: "Deployment", value: "Docker (compose-ready)" },
+        { label: "Authentication", value: "2 Factor Authentication" },
+        { label: "Database", value: "PostgreSQL" },
+        { label: "Gis", value: "Here Tech" },
+        { label: "Automation", value: "Selenium" },
       ],
-      // githubUrl optional
+      githubUrl: "https://github.com/ali-haidir/REPO_NAME",  //change here to the actual github repo
     },
     userFlow: {
       title: "USER FLOW",
-      image: "/images/projects/userflow-placeholder.png",
+      image: "/images/projects/ripc/user_flow.png",
       description:
-        "End-to-end flow from upload → retrieval → answer with citations.",
+        "New request received → Bot logs into Baladiya portal (OTP) → Fetch requests → Geo-compare (lat/long + radius) against topology DB → Decision: Accept / Reject / Joint Visit → Portal action submitted + audit logged → Technician notified for joint visit (if needed)",
       bullets: [
-        "Upload / ingest documents",
-        "Chunking + embeddings + indexing",
-        "Hybrid retrieval (BM25 + vector search)",
-        "Rerank + build context + generate answer",
+        "Automated retrieval of excavation requests from a non-API government portal (Selenium)",
+        "OTP-enabled login workflow using Telegram bot relay + mobile forwarding script",
+        "Geo-radius matching (lat/long) against internal topology/asset database",
+        "Auto-decision engine: Accept / Reject / Joint Visit based on proximity confidence",
+        "Joint-visit case creation with technician details (time/day/location/contact)",
+        "Next.js dashboard for tracking, audit logs, and manual override when required"
       ],
-    },
-  },
+    },  
+    
+},
 
   {
-    slug: "network-config-rollout",
-    title: "NEXTGEN CONFIG ROLLOUT",
-    subtitle: "Approval workflow + scheduled pushes + rollback readiness",
-    image: "/images/projects/placeholder.jpeg",
+    slug: "self_managed_inventory",
+    title: "Self Managed Inventory",
+    subtitle: "Inventory management system",
+    image: "/images/projects/inventory/dash.png",
     featured: true,
     heroMeta: [
-      { label: "DELIVERABLES", value: "AUTOMATION" },
-      { label: "IMPACT", value: "Reduced rollout risk" },
-      { label: "ROLE", value: "Automation Engineer" },
-      { label: "SERVICES", value: "VALIDATION • APPROVALS • ROLLBACK" },
+      { label: "DELIVERABLES", value: "PLATFORM" },
+      { label: "IMPACT", value: "Management" },
+      { label: "ROLE", value: "Architech" },
+      { label: "SERVICES", value: "Services • NatBox • SNMP" },
     ],
     media: [
-      "/images/projects/placeholder.jpeg",
-      "/images/projects/placeholder.jpeg",
-      "/images/projects/placeholder.jpeg",
+      "/images/projects/inventory/devices.png",
+      "/images/projects/inventory/region.png",
+      "/images/projects/inventory/import.png",
+      "/images/projects/inventory/dash.png",
     ],
     story: {
       eyebrow: "THE STORY",
-      paragraphs: ["This is the story of the project", "This is the story of the project"],
+      paragraphs: ["Manual inventory tracking breaks the moment the network changes. Solution is a self-managed inventory platform where devices are created/updated automatically by syncing with NetBox, while teams can still manage attributes through clean CRUD workflows.","Result: always-current inventory, fewer manual updates, and faster operational reporting."],
     },
     solution: {
       description:
-        "A controlled rollout pipeline with approvals, scheduling, validation, and rollback readiness to reduce network change risk.",
+        "An inventory management system that stays up-to-date automatically by syncing devices from NetBox, while providing full CRUD operations, filtering, and operational views for daily use.",
       languages: [
-        { name: "Python" },
-        { name: "JavaScript" },
+        { name: "Python", icon: FaPython },
+        { name: "Docker", icon: FaDocker },
+        { name: "FastAPI", icon: SiFastapi },
+        { name: "PostgreSQL", icon: BiLogoPostgresql },
+        { name: "NetBox", icon: GiFlatPlatform },
       ],
       specs: [
-        { label: "Workflow", value: "Requester → Approval → Scheduled rollout" },
-        { label: "Validation", value: "Syntax + pre-check + dry run" },
-        { label: "Safety", value: "Rollback plan + audit logs" },
+        { label: "Framework", value: "FastAPI + Uvicorn" },
+        { label: "Database", value: "PostgreSQL" },
+        { label: "Sync", value: "NetBox" },
       ],
+      // githubUrl optional
+      githubUrl: "https://github.com/ali-haidir/REPO_NAME", 
     },
+    userFlow: {
+      title: "USER FLOW",
+      image: "/images/projects/inventory/flow.png",
+      description:
+        "End-to-end flow from upload → retrieval → answer with citations.",
+      bullets: [
+        "CRUD inventory operations (devices, sites, regions, ownership)",
+        "Auto-discovery sync from NetBox (create/update devices automatically)",
+        "Upsert logic to prevent duplicates and keep records current",
+        "Search, filtering, and quick edits via a lightweight Next.js UI",
+        "PostgreSQL-backed source of truth ready for dashboards and automation",
+        "Extensible design for future health checks, alerts, and reporting"
+      ]
+      
+    },
+    
+  },
+
+  {
+    slug: "alarm-ticket-collaboration",
+    title: "SOC–NOC Collaboration: Alarm-to-Ticket Automation",
+    subtitle: "Alarms into action",
+    image: "/images/projects/soc_noc/dash.png",
+    featured: true,
+    heroMeta: [
+      { label: "DELIVERABLES", value: "AUTOMATION" },
+      { label: "IMPACT", value: "Efficiency" },
+      { label: "ROLE", value: "Automation Engineer" },
+      { label: "SERVICES", value: "ALARMS • Tickets • FIELD" },
+    ],
+    media: [
+      "/images/projects/soc_noc/tickets.png",
+      "/images/projects/soc_noc/ticket_lifecycle.png",
+      "/images/projects/soc_noc/n8n_flow.png",
+      "/images/projects/soc_noc/dash.png",
+      "/images/projects/soc_noc/it_ticketing_system.png",
+    ],
+    story: {
+      eyebrow: "THE STORY",
+      paragraphs: ["Operations teams were drowning in noisy alarms and manual ticket handling, slowing response time during incidents. I built an automation pipeline that cleans and suppresses alarms, extracts critical details, correlates events, and automatically creates and assigns tickets to the right teams/field crews. It also calculates customer impact and flags blackout zones when a major area is affected—resulting in faster triage, fewer duplicate tickets, and clearer outage visibility."],
+    },
+    solution: {
+      description:
+        "An end-to-end SOC–NOC workflow that transforms raw alarms into clean, enriched incidents with automatic ticket creation, smart assignment, and real-time customer impact/blackout classification.",
+      languages: [
+        { name: "Python" , icon:FaPython },
+        { name: "JavaScript" , icon: SiJavascript },
+        { name: "MySQL" , icon: SiMysql },
+        { name: "Jobs" , icon: IoIosTimer },
+        { name: "Workflow" , icon: SiN8N},
+
+        
+      ],
+      specs: [
+        { label: "Workflow", value: "Business Process" },
+        { label: "DataBase", value: "MySQL" },
+        { label: "Jobs", value: "Air Flow" },
+      ],
+      // githubUrl optional
+      githubUrl: "https://github.com/ali-haidir/REPO_NAME", 
+    },
+    userFlow: {
+      title: "USER FLOW",
+      image: "/images/projects/soc_noc/ticket_lifecycle.png",
+      description:
+        "Alarms received → Clean + suppress + normalize → Extract & enrich critical context → Correlate + apply rules → Create ticket → Auto-assign to team/field → Compute customer impact + blackout % → Update ticket + dashboard until resolution",
+      bullets: [
+        "Ingest and load alarms at scale (batch/stream-ready)",
+    "Cleaning, deduplication, and suppression to reduce noise",
+    "Extraction of critical alarm context for actionable incidents",
+    "Automated ticket creation with correct severity and metadata",
+    "Smart assignment to relevant teams and field dispatch groups",
+    "Customer impact calculation (count + blackout % classification)",
+    "Dashboards and audit logs for end-to-end operational visibility"
+      ]
+      
+    },
+    
   },
 
   {
@@ -267,25 +374,8 @@ export const PROJECTS: ProjectDetail[] = [
   },
 
   // remaining projects (keep as-is; add solution later anytime)
-  {
-    slug: "balady-automation",
-    title: "BALADY PERMIT AUTOMATION",
-    subtitle: "Selenium + APIs + OTP handling + status updates",
-    image: "/images/projects/placeholder.jpeg",
-    featured: false,
-    heroMeta: [
-      { label: "DELIVERABLES", value: "AUTOMATION" },
-      { label: "IMPACT", value: "Less manual effort" },
-      { label: "ROLE", value: "Automation Engineer" },
-      { label: "SERVICES", value: "SCRAPING • OTP • API UPDATES" },
-    ],
-    media: [
-      "/images/projects/placeholder.jpeg",
-      "/images/projects/placeholder.jpeg",
-      "/images/projects/placeholder.jpeg",
-    ],
-    story: { eyebrow: "THE STORY", paragraphs: ["This is the story of the project"] },
-  },
+  
+
   {
     slug: "device-health-check",
     title: "NETWORK DEVICE HEALTH CHECKS",
